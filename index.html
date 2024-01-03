@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Solicitud de Empleo</title>
+</head>
+<body>
+<div>
+  <form id="solicitudForm">
+    <h1>DATOS PERSONALES</h1>
+    <label for="nombre">Nombre(s):</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="paterno">Apellido Paterno:</label>
+    <input type="text" id="paterno" name="paterno" required>
+
+    <label for="materno">Apellido Materno:</label>
+    <input type="text" id="materno" name="materno" required>
+
+    <label for="email">Correo electrónico:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="telefono">Teléfono:</label>
+    <input type="tel" id="telefono" name="telefono" required>
+
+    
+
+    
+  </form>
+</div>
+<div>
+  <form>
+    <label>Fecha de Nacimiento:</label>
+    <div class="fecha-nacimiento">
+      <select id="dia" name="dia"></select>
+      <select id="mes" name="mes"></select>
+      <select id="año" name="año"></select>
+    </div>
+
+    
+  </form>
+  <script>
+    // Función para generar opciones de forma dinámica
+    function generarOpciones(selector, inicio, fin) {
+      var select = document.getElementById(selector);
+      for (var i = inicio; i <= fin; i++) {
+        var option = document.createElement('option');
+        option.value = i;
+        option.text = i;
+        select.add(option);
+      }
+    }
+
+    // Generar opciones para día (1 al 31)
+    generarOpciones('dia', 1, 31);
+
+    // Generar opciones para mes (1 al 12)
+    generarOpciones('mes', 1, 12);
+
+    // Generar opciones para año (por ejemplo, desde 1950 hasta el año actual)
+    var añoActual = new Date().getFullYear();
+    generarOpciones('año', 1950, añoActual);
+
+    function obtenerFechaNacimiento() {
+      // Obtener los valores de día, mes y año
+      var dia = document.getElementById('dia').value;
+      var mes = document.getElementById('mes').value;
+      var año = document.getElementById('año').value;
+
+      // Mostrar la fecha de nacimiento en la consola (puedes realizar otras acciones aquí)
+      console.log('Fecha de Nacimiento:', año + '-' + (mes.length === 1 ? '0' + mes : mes) + '-' + (dia.length === 1 ? '0' + dia : dia));
+    }
+  </script>
+</div> 
+
+  <script>
+    function enviarSolicitud() {
+      // Recopilar los datos del formulario
+      var nombre = document.getElementById('nombre').value;
+      var paterno = document.getElementById('paterno').value;
+      var materno = document.getElementById('materno').value;
+      var email = document.getElementById('email').value;
+      var telefono = document.getElementById('telefono').value;
+      
+
+
+      // Aquí puedes realizar acciones adicionales, como enviar los datos a un servidor mediante AJAX
+
+      // Ejemplo de salida en la consola
+      console.log('Nombre:', nombre);
+      console.log('Paterno:', paterno);
+      onsole.log('Materno:', materno);
+      console.log('Email:', email);
+      console.log('Teléfono:', telefono);
+      
+
+      // Puedes añadir aquí el código para enviar los datos a un servidor o realizar otras acciones necesarias.
+    }
+
+    // Obtener el elemento select
+    function obtenerFechaNacimiento() {
+      // Obtener los valores de día, mes y año
+      var dia = document.getElementById('dia').value;
+      var mes = document.getElementById('mes').value;
+      var año = document.getElementById('año').value;
+
+      
+    }
+
+  
+
+    
+  </script>
+<div>
+
+  <form class="paisyestado">
+    
+    <label for="pais y estado de nacimiento">País y Estado de nacimiento:</label>  
+    <div class="pais-estado">
+    <label for="pais">País:</label>
+    <select id="pais" name="pais" onchange="actualizarEstados()"></select>
+
+    <label for="estado">Estado:</label>
+    <select id="estado" name="estado"></select>
+  </div>
+  </form>
+
+  <script>
+    // Datos de ejemplo (puedes personalizar según tus necesidades)
+    var paises = ['Selecciona un país', 'Mexico', 'Brasil', 'Colombia'];
+    var estadosPorPais = {
+      'Selecciona un país': ['Selecciona un estado'],
+      'Mexico': ['Aguacalientes', 'Baja California', 'Baja California Sur', 'Campeche','Chiapas','Chihuahua','Ciudad de México','Coahuila', 'Colima', 'Durango','Estado de México','Guanajuato','Guerrero','Hidalgo','Jalisco ','Michoacán','Morelos','Nayarit','Nuevo León','Oaxaca','Puebla','Querétaro','Quintana Roo','San Luis Potosí','Sinaloa','Sonora','Tabasco','Tamaulipas','Tlaxcala','Veracruz','Yucatán','Zacatecas'],
+      'Brasil': ['Extranjero'],
+      'Colombia': ['Extranjero']
+    };
+
+    // Inicializar el selector de países
+    var selectPais = document.getElementById('pais');
+    for (var i = 0; i < paises.length; i++) {
+      var option = document.createElement('option');
+      option.value = paises[i];
+      option.text = paises[i];
+      selectPais.add(option);
+    }
+
+    // Inicializar el selector de estados con el primer país
+    var selectEstado = document.getElementById('estado');
+    var primerPais = paises[0];
+    for (var i = 0; i < estadosPorPais[primerPais].length; i++) {
+      var option = document.createElement('option');
+      option.value = estadosPorPais[primerPais][i];
+      option.text = estadosPorPais[primerPais][i];
+      selectEstado.add(option);
+    }
+
+    // Función para actualizar el selector de estados según el país seleccionado
+    function actualizarEstados() {
+      var paisSeleccionado = document.getElementById('pais').value;
+      var estados = estadosPorPais[paisSeleccionado];
+
+      // Limpiar el selector de estados
+      selectEstado.innerHTML = '';
+
+      // Agregar las opciones de estados
+      for (var i = 0; i < estados.length; i++) {
+        var option = document.createElement('option');
+        option.value = estados[i];
+        option.text = estados[i];
+        selectEstado.add(option);
+      }
+    }
+
+    // Función para obtener la selección actual
+    function obtenerSeleccion() {
+      var paisSeleccionado = document.getElementById('pais').value;
+      var estadoSeleccionado = document.getElementById('estado').value;
+
+      // Mostrar la selección en la consola (puedes realizar otras acciones aquí)
+      console.log('País seleccionado:', paisSeleccionado);
+      console.log('Estado seleccionado:', estadoSeleccionado);
+    }
+  </script>
+</div>
+
+<button type="button" onclick="enviarSolicitud()">Sigiente</button>
+</body>
+</html>
