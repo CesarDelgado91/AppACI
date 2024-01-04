@@ -6,24 +6,19 @@
   <link rel="stylesheet" href="style.css">
   <title>Solicitud de Empleo</title>
 </head>
-<body>
+
 <div>
   <form id="solicitudForm">
     <h1>DATOS PERSONALES</h1>
-    <label for="nombre">Nombre(s):</label>
-    <input type="text" id="nombre" name="nombre" required>
+    <input type="text" id="nombre" name="nombre" required placeholder="Nombre(s)">
 
-    <label for="paterno">Apellido Paterno:</label>
-    <input type="text" id="paterno" name="paterno" required>
+    <input type="text" id="paterno" name="paterno" placeholder="Apellido Paterno">
 
-    <label for="materno">Apellido Materno:</label>
-    <input type="text" id="materno" name="materno" required>
+    <input type="text" id="materno" name="materno" required placeholder="Apellido Materno">
 
-    <label for="email">Correo electrónico:</label>
-    <input type="email" id="email" name="email" required>
+    <input type="email" id="email" name="email" required placeholder="Correo electrónico">
 
-    <label for="telefono">Teléfono:</label>
-    <input type="tel" id="telefono" name="telefono" required>
+
 
     
 
@@ -184,7 +179,93 @@
     }
   </script>
 </div>
+<div>
+  <form>
+    <label >Sexo:</label>
+    <div class="opciones-sexo">
+      <label >
+        <input type="radio" name="genero" value="masculino" > Masculino
+      </label>
+      <label class="horizontal-sexo">
+        <input type="radio" name="genero" value="femenino" > Femenino
+      </label>
+    </div>
 
+  </form>
+
+  <script>
+    function obtenerSeleccion() {
+      var generoSeleccionado = document.querySelector('input[name="genero"]:checked');
+
+      if (generoSeleccionado) {
+        // Mostrar la selección en la consola (puedes realizar otras acciones aquí)
+        console.log('Género seleccionado:', generoSeleccionado.value);
+      } else {
+        alert('Por favor, selecciona un género.');
+      }
+    }
+  </script>
+</div>
+
+<div>
+  <form>
+
+    <label for="curp">CURP:</label>
+    <input type="text" id="curp" name="curp" placeholder="Ingrese su CURP" >
+     
+    <a id="enlaceBusqueda" href="https://www.gob.mx/curp/" target="_blank">Consultar CURP</a>
+
+
+    <label for="estadoCivil" >Estado Civil:</label>
+    <select id="estadoCivil" name="estadoCivil" class="select-c">
+      <option value="soltero">Soltero/a</option>
+      <option value="casado">Casado/a</option>
+      <option value="divorciado">Divorciado/a</option>
+      <option value="union libre">Union Libre</option>
+      <option value="viudo">Viudo/a</option>
+      <option value="madre soltera">Madre Soltera</option>
+      <option value="indistinto">Indistinto</option>
+      <!-- Agrega más opciones según sea necesario -->
+    </select>
+
+    
+  </form>
+
+  <script>
+    function obtenerSeleccion() {
+      var curp = document.getElementById('curp').value;
+      var estadoCivil = document.getElementById('estadoCivil').value;
+
+      // Mostrar la selección en la consola (puedes realizar otras acciones aquí)
+      console.log('CURP:', curp);
+      console.log('Estado Civil:', estadoCivil);
+
+      // Actualizar el enlace de búsqueda con el valor de la CURP
+      var enlaceBusqueda = document.getElementById('enlaceBusqueda');
+      enlaceBusqueda.href = 'https://www.google.com/search?q=' + curp;
+    }
+  </script>
+</div>
+<div>
+  <form >
+    <input type="text" id="telefono" name="telefono" required placeholder="Telefono celular de contacto">
+
+    <input type="text" id="telefono2" name="telefono2" placeholder="Telefono 2 de contacto">
+
+
+
+  </form>
+  <script>
+   var telefono = document.getElementById('telefono').value;
+   var telefono = document.getElementById('telefono2').value;
+
+   console.log('Teléfono Celular:', telefono);
+
+  </script>
+</div>
+<div>
+  
+</div>
 <button type="button" onclick="enviarSolicitud()">Sigiente</button>
 </body>
 </html>
