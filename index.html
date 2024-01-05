@@ -7,16 +7,18 @@
   <title>Solicitud de Empleo</title>
 </head>
 
+<body>
+<div id="datospersonales" >
 <div>
-  <form id="solicitudForm">
+  <form id="solicitudForm" >
     <h1>DATOS PERSONALES</h1>
-    <input type="text" id="nombre" name="nombre" required placeholder="Nombre(s)">
+    <input type="text" id="nombre" name="nombre" required placeholder="Nombre(s)" class="input-nombre">
 
-    <input type="text" id="paterno" name="paterno" placeholder="Apellido Paterno">
+    <input type="text" id="paterno" name="paterno" placeholder="Apellido Paterno" class="input-nombre">
 
-    <input type="text" id="materno" name="materno" required placeholder="Apellido Materno">
+    <input type="text" id="materno" name="materno" required placeholder="Apellido Materno" class="input-nombre">
 
-    <input type="email" id="email" name="email" required placeholder="Correo electrónico">
+    
 
 
 
@@ -114,10 +116,9 @@
     
     <label for="pais y estado de nacimiento">País y Estado de nacimiento:</label>  
     <div class="pais-estado">
-    <label for="pais">País:</label>
+
     <select id="pais" name="pais" onchange="actualizarEstados()"></select>
 
-    <label for="estado">Estado:</label>
     <select id="estado" name="estado"></select>
   </div>
   </form>
@@ -181,16 +182,17 @@
 </div>
 <div>
   <form>
-    <label >Sexo:</label>
-    <div class="opciones-sexo">
+    <label  class=".flex-item-left" >Sexo:</label>
+    <div class=".flex-item-left">
       <label >
-        <input type="radio" name="genero" value="masculino" > Masculino
+        <input type="radio" name="genero" value="masculino"  class=".flex-item-left" > Masculino
       </label>
-      <label class="horizontal-sexo">
-        <input type="radio" name="genero" value="femenino" > Femenino
+      <label >
+        <input type="radio" name="genero" value="femenino"  class=".flex-item-left" > Femenino
       </label>
+      
     </div>
-
+    <br>
   </form>
 
   <script>
@@ -209,15 +211,14 @@
 
 <div>
   <form>
-
-    <label for="curp">CURP:</label>
-    <input type="text" id="curp" name="curp" placeholder="Ingrese su CURP" >
+    <input type="text" id="curp" name="curp" placeholder="Ingrese su CURP" class="input-nombre" >
      
     <a id="enlaceBusqueda" href="https://www.gob.mx/curp/" target="_blank">Consultar CURP</a>
-
+    <br>
 
     <label for="estadoCivil" >Estado Civil:</label>
-    <select id="estadoCivil" name="estadoCivil" class="select-c">
+    <select id="estadoCivil" name="estadoCivil" class="input-nombre">
+      <option value="seleccione">Seleccione </option>
       <option value="soltero">Soltero/a</option>
       <option value="casado">Casado/a</option>
       <option value="divorciado">Divorciado/a</option>
@@ -247,25 +248,161 @@
   </script>
 </div>
 <div>
-  <form >
-    <input type="text" id="telefono" name="telefono" required placeholder="Telefono celular de contacto">
+  <form class=".input-correo">
+    <input type="text" id="telefono" name="telefono" required placeholder="Telefono celular de contacto" class="input-nombre" >
 
-    <input type="text" id="telefono2" name="telefono2" placeholder="Telefono 2 de contacto">
+    <input type="text" id="telefono2" name="telefono2" placeholder="Telefono 2 de contacto" class="input-nombre" >
 
 
 
   </form>
   <script>
    var telefono = document.getElementById('telefono').value;
-   var telefono = document.getElementById('telefono2').value;
-
-   console.log('Teléfono Celular:', telefono);
+   var telefono2 = document.getElementById('telefono2').value;
 
   </script>
 </div>
 <div>
-  
+  <form id="correoForm">    
+    <input type="email" id="correo1" name="correo1" required placeholder="Correo electrónico personal" class="input-nombre">
+    
+    <input type="email" id="correo2" name="correo2" required placeholder="Escribe de nuevo tu correo electrónico personal" class="input-nombre">
+    
+</form>
+
+<script>
+    function validarCorreos() {
+        var correo1 = document.getElementById('correo1').value;
+        var correo2 = document.getElementById('correo2').value;
+
+        if (correo1 === correo2) {
+            alert('Los correos son iguales: ' + correo1);
+        } else {
+            alert('Los correos no coinciden. Inténtelo de nuevo.');
+        }
+    }
+</script>
 </div>
-<button type="button" onclick="enviarSolicitud()">Sigiente</button>
+
+<div>
+ <form >
+  <label for="enterastedeempleo" >¿Como te enteraste de este empleo?</label>
+  <select id="enterastedeempleo" name="enterastedeempleo" class="input-nombre" >
+    <option value="seleccione">Seleccione</option>
+    <option value="radio">Radio</option>
+    <option value="periodico">Periodico</option>
+    <option value="anunciomanta">Anuncio en manta</option>
+    <option value="iniciativapropia">Iniciativa propia</option>
+    <option value="invitocolaborador">Me invito un colaborador</option>
+    <option value="facebook">Facebook</option>
+    <option value="tiktoc">Tik Tok</option>
+    <option value="linkedin">Linkedin</option>
+    <option value="occ">OCC</option>
+    <option value="volanteo">Volanteo</option>
+    <option value="poster">Poster</option>
+    <!-- Agrega más opciones según sea necesario -->
+  </select>
+
+ </form>
+</div>
+<div>
+  <form action="">
+  <label for="trabajasteenaci" >¿Trabajaste antes en ACI?</label>
+  <br>
+  <form id="respuestaForm">
+    <label>
+        <input type="radio" name="respuesta" value="si" required> Sí
+    </label>
+    <label>
+        <input type="radio" name="respuesta" value="no"> No
+    </label>
+    <br>
+</form>
+<br>
+<script>
+    function validarRespuesta() {
+        var opciones = document.getElementsByName('respuesta');
+        var respuesta;
+
+        for (var i = 0; i < opciones.length; i++) {
+            if (opciones[i].checked) {
+                respuesta = opciones[i].value;
+                break;
+            }
+        }
+
+        if (respuesta === 'si') {
+            alert('Respuesta correcta: Sí');
+        } else if (respuesta === 'no') {
+            alert('Respuesta correcta: No');
+        } else {
+            alert('Por favor, seleccione una opción.');
+        }
+    }
+</script>
+
+</div>
+</form>
+<div>
+  <form action="">
+  <label for="primerempleo" >¿Es tu primer empleo?</label>
+  <br>
+  <form id="respuestaForm">
+    <label>
+        <input type="radio" name="respuesta" value="si" required> Sí
+    </label>
+    <label>
+        <input type="radio" name="respuesta" value="no"> No
+    </label>
+    <br>
+</form>
+
+<script>
+    function validarRespuesta() {
+        var opciones = document.getElementsByName('respuesta');
+        var respuesta;
+
+        for (var i = 0; i < opciones.length; i++) {
+            if (opciones[i].checked) {
+                respuesta = opciones[i].value;
+                break;
+            }
+        }
+
+        if (respuesta === 'si') {
+            alert('Respuesta correcta: Sí');
+        } else if (respuesta === 'no') {
+            alert('Respuesta correcta: No');
+        } else {
+            alert('Por favor, seleccione una opción.');
+        }
+    }
+</script>
+</form>
+<br>
+</div>
+<div>
+  <form action="">
+  <input type="text" id="hijos" name="hijos" required placeholder="numero de hijos" class="input-nombre">
+  </form>
+</div>
+<div>
+
+
+ <form action="" class="align-right">
+   <button type="button" onclick="mostrarSiguiente('lugarderecidencia')" >SIGUIENTE></button>
+ </form> 
+</div>
+
+</div>  
+
+<div id="lugarderecidencia" >
+
+
+</div>
+
+
 </body>
+
+
 </html>
