@@ -11,20 +11,13 @@
 <div id="datospersonales" >
 <div>
   <form id="solicitudForm" >
-    <h1>DATOS PERSONALES</h1>
+    <h1 class="centrar">DATOS PERSONALES</h1>
     <input type="text" id="nombre" name="nombre" required placeholder="Nombre(s)" class="input-nombre">
 
     <input type="text" id="paterno" name="paterno" placeholder="Apellido Paterno" class="input-nombre">
 
-    <input type="text" id="materno" name="materno" required placeholder="Apellido Materno" class="input-nombre">
+    <input type="text" id="materno" name="materno" required placeholder="Apellido Materno" class="input-nombre" uib-tooltip="Escribir apellido materno completo sin abreviaciones">
 
-    
-
-
-
-    
-
-    
   </form>
 </div>
 <div>
@@ -249,9 +242,9 @@
 </div>
 <div>
   <form class=".input-correo">
-    <input type="text" id="telefono" name="telefono" required placeholder="Telefono celular de contacto" class="input-nombre" >
+    <input type="text" id="telefono" name="telefono" required placeholder="Telefono celular de contacto" class="input-nombre" maxlength="10">
 
-    <input type="text" id="telefono2" name="telefono2" placeholder="Telefono 2 de contacto" class="input-nombre" >
+    <input type="text" id="telefono2" name="telefono2" placeholder="Telefono 2 de contacto" class="input-nombre" maxlength="10">
 
 
 
@@ -383,25 +376,90 @@
 </div>
 <div>
   <form action="">
-  <input type="text" id="hijos" name="hijos" required placeholder="numero de hijos" class="input-nombre">
+  <input type="text" id="hijos" name="hijos" required placeholder="Número de hijos" class="input-nombre">
   </form>
 </div>
 <div>
-
-
  <form action="" class="align-right">
+  
    <button type="button" onclick="mostrarSiguiente('lugarderecidencia')" >SIGUIENTE></button>
  </form> 
 </div>
 
 </div>  
+<script>
+  function mostrarSiguiente(idSiguiente) {
+      var pestañaActual = document.querySelector('.seccion.visible');
+      pestañaActual.classList.remove('visible');
+
+      var siguientePestaña = document.getElementById(idSiguiente);
+      siguientePestaña.classList.add('visible');
+  }
+</script>
 
 <div id="lugarderecidencia" >
+  <div>
+    <form id="solicitudForm" >
+      <h1 class="centrar">LUGAR DE RESIDENCIA</h1>
+  <form action="">
+    <label for="paisderesidencia" >Pais de residencia:</label>
+       <br>
+    <form id="respuestaForm">
+       <label>
+          <input type="radio" name="respuesta" value="" required> México
+       </label>
+       <label>
+        <input type="radio" name="respuesta" value=""> Fuera de México
+    </label>
+    <br>
+    </form>
+  </form>
+  </div>
+  <br>
+  <div>
+    <form action="">
+      <input type="text" id="codigopostal" name="cp" required placeholder="Código postal" class="input-nombre">
+    </form>
+  </div>
+   <div>
+    <form action="">
+       <div class="pais-estado">
+         <input type="text" id="estado" name="estado" required placeholder="Estado" class="input-nombre">
+         <br>
+         <input type="text" id="municipio" name="municipio" required placeholder="Municipio" class="input-nombre">
+       </div>
+      
 
+      <input type="text" id="Colonia" name="colonia" required placeholder="Colonia/asentamiento" class="input-nombre">
+      <br>
+      <input type="text" id="Calle" name="calle" required placeholder="Calle" class="input-nombre">
+      <br>
+    </form>
 
+   </div>
+    <div>
+       <form >
+         <div class="pais-estado">
+          <input type="text" id="numeroext" name="numeroext" required placeholder="Número exterior" class="input-nombre" >
+          <input type="text" id="numeroint" name="numeroext" required placeholder="Número interior" class="input-nombre" >
+         </div>
+        
+       </form>
+
+    </div>
 </div>
-
-
+<div>
+  <div>
+    <form action="" class="align-lefth" >
+      <button type="button" onclick="mostrarSiguiente('lugarderecidencia')" > ANTERIOR </button>
+    </form> 
+    </div>
+    <div>
+    <form action="" class="align-right" >
+      <button type="button" onclick="mostrarSiguiente('lugarderecidencia')" >SIGUIENTE> </button>
+    </form> 
+  </div>
+</div>
 </body>
 
 

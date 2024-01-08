@@ -3,7 +3,7 @@
       font-family: Arial, sans-serif;
       text-align: justify center;
       margin: 50px;
-      background-color: #FFF;
+      background-color: #fcfcfc;
       
   }
     
@@ -37,7 +37,7 @@
 
 
     button {
-      background-color: #0e23df;
+      background-color: #1262da;
       color: #fff;
       padding: 10px 15px;
       border: none;
@@ -108,3 +108,13 @@
           display: none;
           margin-bottom: 20px;
       }
+
+      .centrar {
+        text-align: center;
+      }
+
+      .visible {
+        display: block;
+    }
+
+    
